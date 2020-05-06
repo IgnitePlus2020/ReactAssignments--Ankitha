@@ -24,6 +24,11 @@ body {
   font-size: 40px;
   font-weight: 200;
 }
+.container h3 {
+  font-size: 40px;
+  font-weight: 200;
+  text-align: left;
+}
 
 input {
   border: 1px solid rgba(252, 252, 252, 0.4);
@@ -51,3 +56,12 @@ button {
   width: 250px;
   font-size: 18px;
 }
+
+table {
+  border: 1px solid black;
+}
+
+table {
+  border-spacing: 5px;
+}
+
