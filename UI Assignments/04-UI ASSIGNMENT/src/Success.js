@@ -1,8 +1,12 @@
 import React from "react";
 import Customers from "./Customers";
-
+var customer = "";
 function Success(props) {
-  const customer = Customers[props.id];
+  Customers.map(x => {
+    if (x.id === parseInt(props.id)) {
+      customer = x;
+    }
+  });
   return (
     <div className="container">
       <h1>Name : {customer.name}</h1>
