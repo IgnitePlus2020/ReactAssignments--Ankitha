@@ -6,36 +6,31 @@ import Failed from "./Failed";
 
 export default function App() {
   const [id, setID] = useState(0);
+  const [color, setColor] = useState("white");
 
   function handleClick() {
     var flag = true;
     Customers.map(customer => {
-      if (customer.id == id) {
-        const rootElement = document.getElementById("root");
-        ReactDOM.render(
-          <React.StrictMode>
-            <Success id={id} />
-          </React.StrictMode>,
-          rootElement
-        );
+      if (customer.id === parseInt(id)) {
+        ReactDOM.render(<Success id={id} />, document.getElementById("root"));
         flag = false;
-        console.log(flag);
       }
     });
 
-    if (flag == true) {
-      const rootElement = document.getElementById("root");
-      ReactDOM.render(
-        <React.StrictMode>
-          <Failed />
-        </React.StrictMode>,
-        rootElement
-      );
+    if (flag === true) {
+      ReactDOM.render(<Failed />, document.getElementById("root"));
     }
   }
 
   function handleOnChange(event) {
     setID(event.target.value);
+  }
+
+  function handleMouseOver() {
+    setColor("black");
+  }
+  function handleMouseOut() {
+    setColor("white");
   }
 
   return (
@@ -45,7 +40,15 @@ export default function App() {
         type="text"
         placeholder="Search for an ID"
       />
-      <button onClick={handleClick}>Search </button>
+      <button
+        style={{ backgroundColor: color }}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+        onClick={handleClick}
+      >
+        Search
+      </button>
     </div>
   );
 }
+
