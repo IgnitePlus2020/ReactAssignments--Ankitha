@@ -5,7 +5,7 @@ import Success from "./Success";
 import Failed from "./Failed";
 
 export default function App() {
-  const [id, setID] = useState(1);
+  const [id, setID] = useState(0);
 
   function handleClick() {
     var flag = true;
