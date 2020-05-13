@@ -1,29 +1,39 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useState } from "react";
 import "./styles.css";
 import Card from "./Card";
 
-var showDetails = [false, false, false, false]; //four boolean values for four columns
-
 export default function App() {
+  const [showName, setName] = useState(false);
+  const [showPhone, setPhone] = useState(false);
+  const [showEmail, setEmail] = useState(false);
+  const [showReviews, setReviews] = useState(false);
+
   function handleUsername() {
-    showDetails = [true, false, false, false];
-    ReactDOM.render(<App />, document.getElementById("root"));
+    setName(true);
+    setPhone(false);
+    setEmail(false);
+    setReviews(false);
   }
 
   function handlPhoneNumber() {
-    showDetails = [false, true, false, false];
-    ReactDOM.render(<App />, document.getElementById("root"));
+    setName(false);
+    setPhone(true);
+    setEmail(false);
+    setReviews(false);
   }
 
   function handleEmail() {
-    showDetails = [false, false, true, false];
-    ReactDOM.render(<App />, document.getElementById("root"));
+    setName(false);
+    setPhone(false);
+    setEmail(true);
+    setReviews(false);
   }
 
   function handleReviews() {
-    showDetails = [false, false, false, true];
-    ReactDOM.render(<App />, document.getElementById("root"));
+    setName(false);
+    setPhone(false);
+    setEmail(false);
+    setReviews(true);
   }
   return (
     <div className="container">
@@ -37,10 +47,10 @@ export default function App() {
         </div>
       </div>
 
-      {showDetails[0] && <Card type="name" />}
-      {showDetails[1] && <Card type="phone" />}
-      {showDetails[2] && <Card type="email" />}
-      {showDetails[3] && <Card type="reviews" />}
+      {showName && <Card type="name" />}
+      {showPhone && <Card type="phone" />}
+      {showEmail && <Card type="email" />}
+      {showReviews && <Card type="reviews" />}
     </div>
   );
 }
