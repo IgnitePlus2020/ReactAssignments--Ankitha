@@ -1,29 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles.css";
-import Customers from "./Customers";
 import Card from "./Card";
+
+var showDetails = [false, false, false, false]; //four boolean values for four columns
 
 export default function App() {
   function handleUsername() {
-    ReactDOM.render(<Card type="name" />, document.getElementById("root"));
+    showDetails = [true, false, false, false];
+    ReactDOM.render(<App />, document.getElementById("root"));
   }
 
   function handlPhoneNumber() {
-    ReactDOM.render(<Card type="phone" />, document.getElementById("root"));
+    showDetails = [false, true, false, false];
+    ReactDOM.render(<App />, document.getElementById("root"));
   }
 
   function handleEmail() {
-    ReactDOM.render(<Card type="email" />, document.getElementById("root"));
+    showDetails = [false, false, true, false];
+    ReactDOM.render(<App />, document.getElementById("root"));
   }
 
   function handleReviews() {
-    ReactDOM.render(<Card type="reviews" />, document.getElementById("root"));
+    showDetails = [false, false, false, true];
+    ReactDOM.render(<App />, document.getElementById("root"));
   }
   return (
     <div className="container">
       <div class="dropdown">
-        <button class="dropbtn">Dropdown</button>
+        <button class="dropbtn">Menu</button>
         <div class="dropdown-content">
           <a onClick={handleUsername}> User Names</a>
           <a onClick={handlPhoneNumber}>Phone Numbers</a>
@@ -31,6 +36,11 @@ export default function App() {
           <a onClick={handleReviews}>Reviews</a>
         </div>
       </div>
+
+      {showDetails[0] && <Card type="name" />}
+      {showDetails[1] && <Card type="phone" />}
+      {showDetails[2] && <Card type="email" />}
+      {showDetails[3] && <Card type="reviews" />}
     </div>
   );
 }
