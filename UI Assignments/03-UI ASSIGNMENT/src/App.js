@@ -1,27 +1,35 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useState } from "react";
 import "./styles.css";
 import Card from "./Card";
 
-var showDetails = [false, false, false, false];
-
 export default function App() {
+  const [showName, setName] = useState(false);
+  const [showPhone, setPhone] = useState(false);
+  const [showEmail, setEmail] = useState(false);
+  const [showReview, setReview] = useState(false);
   function handleUserName() {
-    showDetails = [true, false, false, false];
-    ReactDOM.render(<App />, document.getElementById("root"));
-  }
-
-  function handlePhoneNo() {
-    showDetails = [false, true, false, false];
-    ReactDOM.render(<App />, document.getElementById("root"));
+    setName(true);
+    setEmail(false);
+    setPhone(false);
+    setReview(false);
   }
   function handelEmail() {
-    showDetails = [false, false, true, false];
-    ReactDOM.render(<App />, document.getElementById("root"));
+    setName(false);
+    setEmail(true);
+    setPhone(false);
+    setReview(false);
+  }
+  function handlePhoneNo() {
+    setName(false);
+    setEmail(false);
+    setPhone(true);
+    setReview(false);
   }
   function handleReviews() {
-    showDetails = [false, false, false, true];
-    ReactDOM.render(<App />, document.getElementById("root"));
+    setName(false);
+    setEmail(false);
+    setPhone(false);
+    setReview(true);
   }
   return (
     <div className="App">
@@ -40,10 +48,10 @@ export default function App() {
         </li>
       </ul>
 
-      {showDetails[0] && <Card type="name" />}
-      {showDetails[1] && <Card type="phone" />}
-      {showDetails[2] && <Card type="email" />}
-      {showDetails[3] && <Card type="reviews" />}
+      {showName && <Card type="name" />}
+      {showPhone && <Card type="phone" />}
+      {showEmail && <Card type="email" />}
+      {showReview && <Card type="reviews" />}
     </div>
   );
 }
