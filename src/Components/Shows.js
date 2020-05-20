@@ -41,11 +41,11 @@ const Shows = [
     },
     {
       id: 6,
-      name: "Never Have I ever",
+      name: "This is Us",
       genre: "Drama",
-      noOfSeasons :1,
-      description: "The complicated life of a first-generation Indian-American teenager.",
-      rating : 8
+      noOfSeasons :4,
+      description: "Kevin, Kate and Randall, three siblings, go through unique personal struggles at different intervals of life as they try to find happiness and get over a tragedy in their past.",
+      rating : 8.7
     },
     {
       id: 7,
